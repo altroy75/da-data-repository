@@ -1,0 +1,106 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "org.springframework.data.remote.grpc.proto";
+option java_outer_classname = "RemoteDataProto";
+
+package remotedata;
+
+// Service definition for remote data access
+service RemoteDataService {
+  // Get a single entity by ID
+  rpc GetById(GetByIdRequest) returns (EntityResponse);
+  
+  // Get all entities of a type
+  rpc GetAll(GetAllRequest) returns (EntityListResponse);
+  
+  // Save (create or update) an entity
+  rpc Save(SaveRequest) returns (EntityResponse);
+  
+  // Delete an entity by ID
+  rpc Delete(DeleteRequest) returns (DeleteResponse);
+  
+  // Check if an entity exists by ID
+  rpc Exists(ExistsRequest) returns (ExistsResponse);
+  
+  // Count all entities of a type
+  rpc Count(CountRequest) returns (CountResponse);
+}
+
+// Request messages
+
+message GetByIdRequest {
+  string resource_name = 1;
+  string id = 2;
+  map<string, string> parameters = 3;
+}
+
+message GetAllRequest {
+  string resource_name = 1;
+  map<string, string> parameters = 2;
+}
+
+message SaveRequest {
+  string resource_name = 1;
+  string id = 2; // Empty for new entities
+  string entity_json = 3; // Entity serialized as JSON
+  map<string, string> parameters = 4;
+}
+
+message DeleteRequest {
+  string resource_name = 1;
+  string id = 2;
+  map<string, string> parameters = 3;
+}
+
+message ExistsRequest {
+  string resource_name = 1;
+  string id = 2;
+  map<string, string> parameters = 3;
+}
+
+message CountRequest {
+  string resource_name = 1;
+  map<string, string> parameters = 2;
+}
+
+// Response messages
+
+message EntityResponse {
+  bool success = 1;
+  int32 status_code = 2;
+  string entity_json = 3; // Entity serialized as JSON
+  string error_message = 4;
+  map<string, string> metadata = 5;
+}
+
+message EntityListResponse {
+  bool success = 1;
+  int32 status_code = 2;
+  repeated string entities_json = 3; // List of entities serialized as JSON
+  string error_message = 4;
+  map<string, string> metadata = 5;
+}
+
+message DeleteResponse {
+  bool success = 1;
+  int32 status_code = 2;
+  string error_message = 3;
+  map<string, string> metadata = 4;
+}
+
+message ExistsResponse {
+  bool success = 1;
+  int32 status_code = 2;
+  bool exists = 3;
+  string error_message = 4;
+  map<string, string> metadata = 5;
+}
+
+message CountResponse {
+  bool success = 1;
+  int32 status_code = 2;
+  int64 count = 3;
+  string error_message = 4;
+  map<string, string> metadata = 5;
+}
