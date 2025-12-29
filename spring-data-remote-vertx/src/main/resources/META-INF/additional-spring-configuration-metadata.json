@@ -1,0 +1,49 @@
+{
+    "properties": [
+        {
+            "name": "spring.data.remote.vertx.address-prefix",
+            "type": "java.lang.String",
+            "description": "Event bus address prefix for remote data operations.",
+            "defaultValue": "remote-data"
+        },
+        {
+            "name": "spring.data.remote.vertx.clustering-enabled",
+            "type": "java.lang.Boolean",
+            "description": "Whether to enable clustering for distributed deployments.",
+            "defaultValue": false
+        },
+        {
+            "name": "spring.data.remote.vertx.cluster-host",
+            "type": "java.lang.String",
+            "description": "Cluster host for joining the cluster. Only used when clustering is enabled."
+        },
+        {
+            "name": "spring.data.remote.vertx.cluster-port",
+            "type": "java.lang.Integer",
+            "description": "Cluster port for joining the cluster. Only used when clustering is enabled.",
+            "defaultValue": 0
+        },
+        {
+            "name": "spring.data.remote.vertx.timeout-ms",
+            "type": "java.lang.Long",
+            "description": "Request timeout in milliseconds.",
+            "defaultValue": 30000
+        },
+        {
+            "name": "spring.data.remote.vertx.headers",
+            "type": "java.util.Map<java.lang.String,java.lang.String>",
+            "description": "Custom headers/metadata to include with every request."
+        },
+        {
+            "name": "spring.data.remote.vertx.event-loop-pool-size",
+            "type": "java.lang.Integer",
+            "description": "Number of event loop threads. Default: 2 * number of CPU cores."
+        },
+        {
+            "name": "spring.data.remote.vertx.worker-pool-size",
+            "type": "java.lang.Integer",
+            "description": "Number of worker threads.",
+            "defaultValue": 20
+        }
+    ]
+}

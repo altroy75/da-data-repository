@@ -19,7 +19,7 @@ spring-data-remote/
 
 ### Pluggable Transport Layer
 - All protocol-specific code goes through `TransportClient` interface
-- New protocols (gRPC, GraphQL) implement `TransportClient` in separate modules
+- New protocols (e.g., gRPC) implement `TransportClient` in separate modules
 - Core module never depends on protocol-specific code
 
 ### Naming Conventions

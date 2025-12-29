@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Core interface for transport layer implementations.
  * This is the main SPI (Service Provider Interface) that must be implemented
- * by each communication protocol (REST, gRPC, GraphQL, etc.).
+ * by each communication protocol (REST, gRPC, etc.).
  *
  * <p>
  * Transport clients are responsible for:

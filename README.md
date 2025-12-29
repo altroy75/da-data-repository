@@ -95,6 +95,7 @@ public class UserService {
 | `spring-data-remote-core` | Core Spring Data abstractions |
 | `spring-data-remote-rest` | REST transport implementation |
 | `spring-data-remote-grpc` | gRPC transport implementation |
+| `spring-data-remote-vertx` | Vert.x event bus transport implementation |
 
 ## Architecture
 
@@ -125,8 +126,8 @@ public class UserService {
               ┌───────────────┼───────────────┐
               ▼               ▼               ▼
         ┌──────────┐   ┌──────────┐   ┌──────────┐
-        │   REST   │   │   gRPC   │   │ GraphQL  │
-        │(included)│   │(included)│   │ (future) │
+        │   REST   │   │   gRPC   │   │  Vert.x  │
+        │(included)│   │(included)│   │(included)│
         └──────────┘   └──────────┘   └──────────┘
 ```
 
