@@ -87,6 +87,52 @@ public class UserService {
 }
 ```
 
+## Using Vert.x Event Bus Transport
+
+To use the Vert.x clustered event bus transport instead of REST:
+
+### 1. Add Vert.x Dependency
+
+```xml
+<dependency>
+    <groupId>org.springframework.data</groupId>
+    <artifactId>spring-data-remote-vertx</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+</dependency>
+```
+
+### 2. Configure Event Bus
+
+```yaml
+spring:
+  data:
+    remote:
+      vertx:
+        address-prefix: remote-data
+        clustering-enabled: false
+        timeout-ms: 30000
+```
+
+For clustered deployments:
+
+```yaml
+spring:
+  data:
+    remote:
+      vertx:
+        address-prefix: remote-data
+        clustering-enabled: true
+        cluster-host: localhost
+        cluster-port: 5701
+```
+
+### 3. Use the Same Entities and Repositories
+
+The entity, repository, and service code remains the same as the REST example above. The transport layer is completely transparent to your application code!
+
+> [!NOTE]
+> The Vert.x transport requires server-side event bus consumers to handle the requests. These must be implemented separately to respond to messages on the configured addresses (e.g., `remote-data.get-by-id`, `remote-data.save`, etc.).
+
 ## Modules
 
 | Module | Description |
